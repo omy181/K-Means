@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import math as math
-import pprint as pp
 
 def FindClosestCentroid(centroids,point):
     closest_distance = 0
@@ -55,7 +54,8 @@ def CalculateKmeans(data:pd.DataFrame,k,epoch):
         Point_Clusters = AssigntoNearestCentroid(centroids,points)
         centroids = FindNewCentroids(Point_Clusters)
 
-    return centroids
+    Point_Clusters = AssigntoNearestCentroid(centroids,points)
+    return centroids,Point_Clusters
 
 def AskQuestion(Centroids,Question_Point):
     i = FindClosestCentroid(Centroids,Question_Point)
