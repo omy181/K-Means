@@ -21,10 +21,33 @@ def YChanged(val):
 
 def Calculate_and_Visualize():
     
+    # run algorithm
     kval = K_value_Entry_text.get()
     epochval=Epoch_Entry_text.get()
-    Centroids,Point_Clusters = CalculateKmeans(data,k=kval,epoch=epochval)
+    Centroids,Point_Clusters,Point_indexes = CalculateKmeans(data,k=kval,epoch=epochval)
 
+
+    # write into text file
+    datatowrite = ""
+    for index,cluster in enumerate(Point_Clusters.values()):
+        datatowrite += f"\nCluster {index+1}\n----------\n"
+        for _,index_on_data in enumerate(Point_indexes[index]):
+            datatowrite += f"\tRecord {index_on_data}\n"
+
+    datatowrite += "\n\n"
+    for index,cluster in enumerate(Point_Clusters.values()):
+        datatowrite+= f"Cluster {index+1}: {len(cluster)} records\n"
+
+    datatowrite += "\n\n"
+    datatowrite += f"WCSS: {CalculateWCSS(Point_Clusters,Centroids)}\n"  # wcss smaller better
+    datatowrite += f"BCSS: {CalculateBCSS(Point_Clusters,Centroids)}\n"  # bcss higher better
+    datatowrite += f"Dunn Index: {CalculateDunnIndex(Point_Clusters,Centroids)}\n"   # dunn index higher better
+
+    f = open("result.txt","w")
+    f.writelines(datatowrite)
+    f.close()
+
+    # plot
     data_cluster_visualization(x_column,y_column,Point_Clusters,data)
 
 

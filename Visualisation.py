@@ -3,6 +3,7 @@ import pandas as pd
 
 def data_cluster_visualization(x,y,Point_Clusters,pandas_data:pd.DataFrame):
 
+    plt.close()
 
     for Cluster in Point_Clusters.values():
         arr = pd.DataFrame(Cluster)
