@@ -57,10 +57,6 @@ def CalculateKmeans(data:pd.DataFrame,k,epoch):
     Point_Clusters = AssigntoNearestCentroid(centroids,points)
     return centroids,Point_Clusters
 
-def AskQuestion(Centroids,Question_Point):
-    i = FindClosestCentroid(Centroids,Question_Point)
-    print("\n\nGiven Point is: ",Question_Point)
-    print("Closest Centroid is: ",Centroids[i])
 
 def NormalizeData(df:pd.DataFrame):
     return (df-df.min())/(df.max()-df.min())

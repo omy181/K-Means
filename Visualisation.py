@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-import random 
 
 def data_cluster_visualization(x,y,Point_Clusters,pandas_data:pd.DataFrame):
 
