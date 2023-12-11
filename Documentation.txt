@@ -1,0 +1,6 @@
+K-means python libraries:
+
+Pandas: for reading data
+Numpy: for manupilating data
+Customtkinter: for the gui
+Matplotlib: for plotting the data
